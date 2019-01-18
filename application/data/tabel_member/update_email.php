@@ -1,6 +1,6 @@
 <?php
   
-  $tampil = mysqli_query($link, "SELECT no_hp,password,no_anggota FROM member WHERE no_anggota='$_GET[id]'") or die(mysqli_error($link));
+  $tampil = mysqli_query($link, "SELECT email,password,no_anggota FROM tabel_member WHERE no_anggota='$_GET[id]'") or die(mysqli_error($link));
   $data   = mysqli_fetch_array($tampil);
   
 ?>
@@ -17,7 +17,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Edit No Hp (Whatsapp)</h3> <span class="fa fa-pencil"></span>
+                  <h3 class="box-title">Edit Email</h3> <span class="fa fa-pencil"></span>
                   <button onclick="goBack()">Go Back</button>
                 </div><!-- /.box-header -->
                 <!-- form start -->
@@ -28,8 +28,8 @@
                 <div class="col-md-9"> <input type="hidden" class="form-control" value="<?php echo $data['no_anggota']; ?>"name="noAnggota" size="50" readonly ></div>
                 </div>
                 <div class="form-group">
-                <label class="label-control col-md-2">No Hp (Whatsapp)</label> 
-                <div class="col-md-9"> <input type="text" class="form-control" value="<?php echo $data['no_hp']; ?>" placeholder="Isikan No Hp Whatsapp.." name="no_hp" size="50" required ></div>
+                <label class="label-control col-md-2">Email</label> 
+                <div class="col-md-9"> <input type="text" class="form-control" value="<?php echo $data['email']; ?>" placeholder="Isikan Email.." name="email" size="50" required ></div>
                 </div>
                 <div class="form-group">
                 <label class="label-control col-md-2">Password</label>  
@@ -52,7 +52,7 @@
                 $verif_password=$_POST['password'];
                 if(isset($_POST['tambah'])){  
                       if ($verif_password == $password) {
-                        include"update_proses_nohp.php";
+                        include"update_proses_email.php";
                       }else{
                         echo "<div class='alert alert-danger'>
                         <strong>Gagal!</strong> Password tidak sama

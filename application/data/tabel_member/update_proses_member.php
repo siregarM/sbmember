@@ -6,7 +6,7 @@
 			$tanggalLahir = $_POST['tanggalLahir'];
 			$provinsi = $_POST['provinsi'];
 			$kota = $_POST['kota'];
-		mysqli_query($link,"UPDATE member set				
+		mysqli_query($link,"UPDATE tabel_member set				
 				nama_lengkap	= '$nama_lengkap',
 				jenis_kelamin 	= '$jenis_kelamin',
 				tempat_lahir 	= '$tempatLahir',

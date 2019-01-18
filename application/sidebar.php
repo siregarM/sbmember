@@ -1,7 +1,7 @@
 <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
              <li class="treeview">
-              <a href="index2.php">
+              <a href="index.php">
                 <i class="fa  fa-home"></i>
                 <span>Home</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -20,6 +20,7 @@
                
               </ul>
             </li>
+             <li><a href="?tampil=tampil_oprec"><i class="fa fa-sign-out"></i>Daftar Pengurus</a></li>
              <li><a href="logout.php"><i class="fa fa-sign-out"></i>Log Out</a></li>
             
                       </ul>

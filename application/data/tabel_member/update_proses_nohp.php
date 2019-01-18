@@ -1,8 +1,8 @@
 <?php
 		$noAnggota = $_POST['noAnggota'];
-		$instagram = $_POST['instagram'];
-		mysqli_query($link,"UPDATE member set				
-				instagram	= '$instagram'
+		$no_hp = $_POST['no_hp'];
+		mysqli_query($link,"UPDATE tabel_member set				
+				no_hp	= '$no_hp'
 				where no_anggota='$noAnggota'
 				
 			") or die(mysqli_error($link));

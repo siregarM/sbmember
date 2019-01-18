@@ -1,7 +1,7 @@
 <?php
 		$noAnggota = $_POST['noAnggota'];
 		$email = $_POST['email'];
-		mysqli_query($link,"UPDATE member set				
+		mysqli_query($link,"UPDATE tabel_member set				
 				email	= '$email'
 				where no_anggota='$noAnggota'
 				

@@ -1,49 +1,24 @@
+<?php
+  
+  $tampil = mysqli_query($link, "SELECT instagram,password,no_anggota FROM tabel_member WHERE no_anggota='$_GET[id]'") or die(mysqli_error($link));
+  $data   = mysqli_fetch_array($tampil);
+  
+?>
 <script type="text/javascript">
       function goBack() {
         window.history.back();
       }
       </script>
-<script type="text/javascript">
-function tampilkanPreview(userfile,idpreview)
-{
-  var gb = userfile.files;
-  for (var i = 0; i < gb.length; i++)
-  {
-    var gbPreview = gb[i];
-    var imageType = /image.jpeg/;
-    var preview=document.getElementById(idpreview);
-    var reader = new FileReader();
-    if (gbPreview.type.match(imageType))
-    {
-      //jika tipe data sesuai
-      preview.file = gbPreview;
-      reader.onload = (function(element)
-      {
-        return function(e)
-        {
-          element.src = e.target.result;
-        };
-      })(preview);
-      //membaca data URL gambar
-      reader.readAsDataURL(gbPreview);
-    }
-      else
-      {
-        //jika tipe data tidak sesuai
-        alert("Tipe file tidak sesuai. Gambar harus bertipe .jpeg or .jpg.");
-      }
-  }
-}
-</script>
+
+
 <div class="row">
 <div class="col-md-6">
 
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Ganti Foto Profil</h3> <span class="fa fa-pencil"></span>
+                  <h3 class="box-title">Edit Instagram</h3> <span class="fa fa-pencil"></span>
                   <button onclick="goBack()">Go Back</button>
-                  <p>Tipe file Gambar harus bertipe .jpeg or .jpg.</p>
                 </div><!-- /.box-header -->
                 <!-- form start -->
               <div class="box-body">
@@ -53,8 +28,8 @@ function tampilkanPreview(userfile,idpreview)
                 <div class="col-md-9"> <input type="hidden" class="form-control" value="<?php echo $data['no_anggota']; ?>"name="noAnggota" size="50" readonly ></div>
                 </div>
                 <div class="form-group">
-                <label class="label-control col-md-2">Email</label> 
-                <div class="col-md-9"> <input type="file" name="userfile" accept="image/jpeg" id="userfile" onchange="tampilkanPreview(this,'preview')" required/></div>
+                <label class="label-control col-md-2">Instagram</label> 
+                <div class="col-md-9"> <input type="text" class="form-control" value="<?php echo $data['instagram']; ?>" placeholder="Isikan Instagram.." name="instagram" size="50" required ></div>
                 </div>
                 <div class="form-group">
                 <label class="label-control col-md-2">Password</label>  
@@ -77,7 +52,7 @@ function tampilkanPreview(userfile,idpreview)
                 $verif_password=$_POST['password'];
                 if(isset($_POST['tambah'])){  
                       if ($verif_password == $password) {
-                        include"update_proses_foto.php";
+                        include"update_proses_instagram.php";
                       }else{
                         echo "<div class='alert alert-danger'>
                         <strong>Gagal!</strong> Password tidak sama
@@ -90,9 +65,6 @@ function tampilkanPreview(userfile,idpreview)
             </div>
               
             </div><!-- /.box-body -->
-
-<div class="col-md-6">
-     <div class="box-body">
-      <img id="preview" width="160px"/>
-    </div>
-    <?php echo php_ini_loaded_file(); ?>
+</div><!-- /.box -->            
+</div>
+</div>

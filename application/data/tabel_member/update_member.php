@@ -1,7 +1,7 @@
 <link type="text/css" rel="stylesheet" href="assets/development-bundle/themes/ui-lightness/ui.all.css" />
 <?php
 	
-	$tampil = mysqli_query($link, "SELECT * FROM member WHERE no_anggota='$_GET[id]'") or die(mysqli_error($link));
+	$tampil = mysqli_query($link, "SELECT * FROM tabel_member WHERE no_anggota='$_GET[id]'") or die(mysqli_error($link));
 	$data  	= mysqli_fetch_array($tampil);
 	
 ?>

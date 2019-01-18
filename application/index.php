@@ -1,4 +1,5 @@
 <?php 
+include "../lib/fungsi_tglindonesia.php";
 include "../lib/koneksi.php";
 session_start();
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
@@ -6,7 +7,7 @@ if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
 	header('location:../index.php');
 }
 $email=$_SESSION['email'];
-$mysql=mysqli_query($link,"select * from member where email='$email'")or die(mysqli_error($link));
+$mysql=mysqli_query($link,"select * from tabel_member where email='$email'")or die(mysqli_error($link));
 $data=mysqli_fetch_array($mysql);
 $nama=$data['nama_lengkap'];
 ?>
@@ -50,6 +51,12 @@ $nama=$data['nama_lengkap'];
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <style>
+      .user-panel-avatar>.image>img {
+    width: 45px;
+    height: 45px;
+    }
+    </style>
   </head>
   <body class="skin-blue">
   <!--heider-->

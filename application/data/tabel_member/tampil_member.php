@@ -1,7 +1,6 @@
-<link type="text/css" rel="stylesheet" href="assets/development-bundle/themes/ui-lightness/ui.all.css" />
 <?php
   
-  $tampil = mysqli_query($link, "SELECT * FROM member WHERE email='$email'") or die(mysqli_error($link));
+  $tampil = mysqli_query($link, "SELECT * FROM tabel_member WHERE email='$email'") or die(mysqli_error($link));
   $data   = mysqli_fetch_array($tampil);
   
 ?>
@@ -76,8 +75,19 @@
                 <table class="table table-bordered table-striped" id="example1">
                   
                   <tr>
-                    <td rowspan="4">
-                      <img src="assets/foto_profil/avatar.jpg" class="img-rounded img-thumbnail" alt="Foto Profil" height="160px">
+                    <td rowspan="5">
+                      <?php
+                      $avatar=$data['foto_profil'];
+                      if($avatar=="NULL"){                        
+                      ?>
+                          <img src="media/foto_profil/avatar.jpg" class="img-rounded img-thumbnail" alt="Foto Profil" height="160px">
+                      <?php
+                      }else{
+                        ?>
+                          <img src="media/foto_profil/<?php echo $avatar?>" class="img-rounded img-thumbnail responsive" alt="Foto Profil" style="height: 160px;width: 75%; ">
+                      <?php
+                      }
+                      ?>
                     </td>
                     <td>No HP (Whatsapp)</td>
                     <td><?php echo $data['no_hp']; ?></td>
@@ -105,8 +115,40 @@
                   </tr>
                   <tr>
                     <td>Status Pendidikan</td>
-                    <td><?php echo $data['status_pendidikan'].' | '.$data['kelas']; ?></td>
-                    <td><i class="fa fa-pencil"></i></td>
+                    <td>
+                      <?php 
+                      $status_pendidikan=$data['status_pendidikan'];
+                      $kelasdb=$data['kelas'];
+                      if($status_pendidikan == "Siswa SMA/Sederajat"){
+                        $kelas = "Kelas";
+                      }elseif($status_pendidikan == "Lulusan SMA/Sederajat"){
+                        $kelas = "Alumni SMA Tahun";
+                      }elseif ($status_pendidikan == "Mahasiswa D3") {
+                        $kelas = "D3 Semester";
+                      }elseif ($status_pendidikan == "Alumni D3") {
+                        $kelas = "Alumni D3 Tahun";
+                      }elseif ($status_pendidikan == "Mahasiswa S1") {
+                        $kelas = "S1 Semester";
+                      }elseif ($status_pendidikan == "Alumni S1") {
+                        $kelas = "Alumni S1 Tahun";
+                      }elseif ($status_pendidikan == "Mahasiswa S2") {
+                        $kelas = "S2 Semester";
+                      }elseif($status_pendidikan == "Alumni S2"){
+                        $kelas = "Alumni S2 Tahun";
+                      }else{
+                        $kelas = "Other";
+                      }
+                      echo $status_pendidikan;
+
+                      ?>                      
+                    </td>
+                    <td rowspan="2">
+                      <a href="?tampil=update_pendidikan&id=<?php echo $data['no_anggota']?>"><i class="fa fa-pencil"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><?php echo $kelas; ?></td>
+                    <td><?php echo $kelasdb; ?></td>
                   </tr>
                   <tr>
                     <td rowspan="8"><a href="?tampil=update_foto&id=<?php echo $data['no_anggota']?>"><i class="fa fa-pencil"></i> Ganti Foto</a></td>
